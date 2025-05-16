@@ -1,0 +1,292 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hi i'm Noval</title>
+  <link rel="shortcut icon" href="{% static 'img/favicon.ico'%}" type="image/x-icon" />
+  <link rel="icon" href="{% static 'img/favicon.ico'%}" type="image/x-icon" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Solusi untuk masalah navbar menutupi konten */
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 120px;
+    }
+    
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #283343;
+      color: #f1f5f9;
+      margin: 0;
+      padding: 0;
+      padding-top: 120px;
+    }
+    header {
+      padding: 20px;
+      text-align: center;
+      background: rgba(33, 42, 65, 0.8);
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      backdrop-filter: blur(10px);
+      height: 120px;
+    }
+    footer {
+      padding: 20px;
+      text-align: center;
+      background: #0f172a;
+      position: relative;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+    }
+    a h1{
+        color: #f1f5f9;
+        text-decoration: none;
+        transition: color 0.3s;
+    }
+    a h1:hover{
+      color: #0ea5e9;
+    }
+    nav a {
+      margin: 0 10px;
+      color: #f1f5f9;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: #0ea5e9;
+    }
+    
+    /* Hero Section dengan Background Gambar */
+    .hero {
+      position: relative;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      text-align: left;
+      padding: 60px 20px;
+      gap: 40px;
+      min-height: 500px;
+      overflow: hidden;
+    }
+    
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: url('{% static "img/hero-bg.png" %}');
+      background-size: cover;
+      background-position: center;
+      filter: blur(5px) brightness(0.6);
+      z-index: -1;
+    }
+    
+    .hero-content {
+      max-width: 500px;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .hero img {
+      width: 350px;
+      object-fit: cover;
+      border-radius: 35px;
+      padding: 5px;
+      background-color: rgba(20, 27, 38, 0.7);
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+      position: relative;
+      z-index: 1;
+    }
+    
+    .about {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 60px 20px;
+      max-width: 800px;
+      margin: 0 auto;
+      background-color: #283343;
+    }
+    .about p {
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+    .portfolio {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px;
+      background-color: #283343;
+    }
+    .portfolio-items {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      max-width: 1000px;
+      margin-top: 20px;
+    }
+    .portfolio-item {
+      background: #373e52;
+      padding: 20px;
+      border-radius: 10px;
+      transition: transform 0.3s;
+    }
+    .portfolio-item:hover {
+      transform: translateY(-5px);
+    }
+    .portfolio-item img {
+      max-width: 100%;
+      border-radius: 10px;
+    }
+    .portfolio-item a {
+      display: inline-block;
+      margin-top: 10px;
+      color: #94a3b8;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .portfolio-item a:hover {
+      color: #ffffff;
+    }
+    .social-icons {
+      margin-top: 20px;
+    }
+    .social-icons a {
+      color: #f1f5f9;
+      margin: 0 10px;
+      font-size: 1.5em;
+      transition: color 0.3s;
+    }
+    .social-icons a:hover {
+      color: #0ea5e9;
+    }
+    footer p {
+      font-size: 0.8em;
+      color: #94a3b8;
+    }
+
+    @media (max-width: 768px) {
+        header {
+            height: auto;
+            padding: 10px;
+        }
+
+        nav {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .hero {
+            flex-direction: column;
+            text-align: center;
+            padding: 40px 10px;
+        }
+
+        .hero img {
+            width: 80%;
+            max-width: 250px;
+        }
+
+        .hero-content {
+            max-width: 100%;
+        }
+
+        .about, .portfolio {
+            padding: 30px 15px;
+        }
+
+        .portfolio-items {
+            grid-template-columns: 1fr;
+            padding: 0 10px;
+        }
+
+        .portfolio-item {
+            padding: 15px;
+        }
+
+        .social-icons a {
+            font-size: 1.3em;
+            margin: 0 8px;
+        }
+    }
+
+  </style>
+</head>
+<body>
+  <header>
+    <a href="#hero">
+        <h1>mnovaldr</h1>
+    </a>
+    <nav>
+      <a href="#about">About Me</a>
+      <a href="#portfolio">Portfolio</a>
+    </nav>
+  </header>
+
+  <section class="hero" id="hero">
+    <div class="hero-content">
+      <h2>Hi Semuanya 👋, Saya<br><strong>Noval</strong></h2>
+      <p>Mahasiswa & Web Developer</p>
+      <p>
+        Saya mahasiswa yang suka kucing dan suka ngulik teknologi. Dari sekian banyak hal di dunia teknologi, aku paling tertarik sama web development. Buatku, bikin website itu kayak main puzzle—seru dan menantang. Sekarang aku lagi terus belajar biar bisa bikin web yang makin keren dan fungsional.
+      </p>
+    </div>
+    <img src="{% static 'img/foto1.jpg'%}" alt="Noval Avatar">
+  </section>
+
+  <section class="about" id="about">
+    <h2>About Me</h2>
+    <p>Hai, saya Muhammad Noval Dwi Ramadhani, tapi panggil saja Noval. Beberapa teman sekolah mungkin mengenal saya sebagai Nopal.</p>
+    <p>Di luar teknologi, saya suka musik, film, bermain puzzle seperti sudoku, dan rubik. Saya juga sangat antusias belajar hal baru dan selalu mencari cara untuk meningkatkan kemampuan saya dalam pengembangan web.</p>
+    <div class="social-icons">
+      <a href="https://www.instagram.com/mnvldr_/" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://github.com/mnovaldr" target="_blank"><i class="fab fa-github"></i></a>
+      <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+      <a href="mailto:mnovaldr@gmail.com"><i class="fas fa-envelope"></i></a>
+    </div>
+  </section>
+
+  <section class="portfolio" id="portfolio">
+    <h2>Portofolio</h2>
+    <p><b>Karya-karya lama saya.</b> Termasuk proyek akhir SMK, cek di bawah buat lihat koleksinya!</p>
+    <div class="portfolio-items">
+      <div class="portfolio-item">
+        <img src="{% static 'img/mamafrozen.png'%}" alt="Mama Frozen">
+        <h3>E-commerce Mama Frozen</h3>
+        <p>Mama Frozen is one of my works, made for the purpose of learning from school.</p>
+        <a href="https://github.com/mnovaldr/mama-frozen" target="_blank">View Source <i class="fa-solid fa-link"></i></a>
+      </div>
+      <div class="portfolio-item">
+        <img src="{% static 'img/restoranque.png'%}" alt="RestoranQue">
+        <h3>RestoranQue</h3>
+        <p>A web-based restaurant application made as my final project.</p>
+      </div>
+      <div class="portfolio-item">
+        <img src="{% static 'img/flutter.png'%}" alt="Calculator Mobile">
+        <h3>Calculator Mobile</h3>
+        <p>A Flutter-based mobile app created during my mobile developer certification.</p>
+        <a href="https://github.com/mnovaldr/muhammad-noval-dwi-ramadhani/tree/mini-project-3" target="_blank">View Source <i class="fa-solid fa-link"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 | Made with ❤️ by <span style="color: #0ea5e9;">Muhammad Noval Dwi Ramadhani</span>. All rights reserved.</p>
+  </footer>
+</body>
+</html>
