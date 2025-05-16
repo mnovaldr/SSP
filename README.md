@@ -1,5 +1,3 @@
-Berikut ini adalah isi file `README.md` yang sudah disesuaikan untuk tugas UTS web portofolio menggunakan Django. Kamu bisa langsung salin ini ke file `README.md` di root direktori proyekmu:
-
 ---
 
 ```markdown
