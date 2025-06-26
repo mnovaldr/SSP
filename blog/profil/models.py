@@ -16,7 +16,7 @@ class Barang(models.Model):
     harga = models.BigIntegerField()
     link_gbr = models.CharField(max_length=150, blank=True)
     waktu_post = models.DateTimeField(auto_now_add=True)
-    jenis_id = models.ForeignKey(Jenis, on_delete=models.CASCADE, null=True)
+    jenis = models.ForeignKey(Jenis, on_delete=models.CASCADE, null=True)
 
     def __str__(self):
         return self.nama
