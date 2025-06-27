@@ -13,6 +13,10 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 from pathlib import Path
 import os
 
+from django.templatetags.static import static
+from django.urls import reverse_lazy
+from django.utils.translation import gettext_lazy as _
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -121,6 +125,9 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
+#media
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
 
 
 # Default primary key field type
@@ -130,6 +137,30 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 UNFOLD = {
     "SITE_TITLE": "Nopal Portfolio",
-    "SITE_HEADER": "Dashboard Nopal Portfolio",
+    "SITE_HEADER": "Dashboard",
     "SITE_SUBHEADER": "Nopal Portfolio",
+    
+
+    "SITE_ICON": {
+        "light": lambda request: static("img/fotoBulet.png"),  # light mode
+        "dark": lambda request: static("img/fotoBulet.png"),  # dark mode
+    },
+
+    "SITE_SYMBOL": "speed",  # symbol from icon set
+    "SITE_FAVICONS": [
+        {
+            "rel": "icon",
+            "sizes": "32x32",
+            "type": "image/svg+xml",
+            "href": lambda request: static("img/favicon.ico"),
+        },
+    ],
+    # "THEME": "dark", # Force theme: "dark" or "light". Will disable theme switcher
+    "LOGIN": {
+        "image": lambda request: static("img/hero-bg1.png"),
+        "redirect_after": lambda request: reverse_lazy("admin:APP_MODEL_changelist"),
+    },
+    "BORDER_RADIUS": "8px",
+
+    
 }

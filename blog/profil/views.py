@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.template import RequestContext
+from . models import Portofolio
 
 
 def view404(request, *args, **argv):
@@ -9,4 +10,5 @@ def view404(request, *args, **argv):
 
 # Create your views here.
 def home(request):
-    return render(request, 'index.html')
+    portofolios = Portofolio.objects.all()
+    return render(request, 'index.html', {'portofolios': portofolios})

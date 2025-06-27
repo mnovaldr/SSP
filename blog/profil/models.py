@@ -8,7 +8,7 @@ class Jenis(models.Model):
     def __str__(self):
         return self.nama
 
-
+#Barang
 class Barang(models.Model):
     kdbrg = models.CharField(max_length=8)
     nama = models.CharField(max_length=75)
@@ -20,3 +20,13 @@ class Barang(models.Model):
 
     def __str__(self):
         return self.nama
+
+#Portfolio
+class Portofolio(models.Model):
+    judul = models.CharField(max_length=100)
+    deskripsi = models.TextField()
+    gambar = models.ImageField(upload_to='portofolio/', blank=True, null=True)
+    link_sumber = models.URLField(blank=True, null=True)
+
+    def __str__(self):
+        return self.judul

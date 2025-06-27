@@ -190,17 +190,20 @@
         <p><strong>Karya-karya lama saya.</strong> Termasuk proyek akhir SMK, cek di bawah buat lihat koleksinya!</p>
       </div>
       <div class="row g-4 mt-4">
+        {% for p in portofolios %}
         <div class="col-md-4" data-aos="fade-up-left">
           <div class="card bg-dark text-white h-100 border-0 shadow p-2">
-            <img src="{% static 'img/mamafrozen.png' %}" class="card-img-top" alt="Mama Frozen">
+            <img src="{{ p.gambar.url }}" class="card-img-top" alt="Portfolio">
             <div class="card-body">
-              <h5 class="card-title">E-commerce Mama Frozen</h5>
-              <p class="card-text">Mama Frozen adalah salah satu koleksi karyaku, dibuat untuk tujuan belajar di sekolah.</p>
-              <a href="https://github.com/mnovaldr/mama-frozen" class="btn btn-outline-light" target="_blank">View Source Code</a>
+              <h5 class="card-title">{{ p.judul }}</h5>
+              <p class="card-text">{{ p.deskripsi }}</p>
+              <a href="{{ p.link_sumber }}" class="btn btn-outline-light" target="_blank">View Source Code</a>
             </div>
           </div>
         </div>
-        <div class="col-md-4" data-aos="fade-up-left">
+        {% endfor %}
+
+        <!-- <div class="col-md-4" data-aos="fade-up-left">
           <div class="card bg-dark text-white h-100 border-0 shadow p-2">
             <img src="{% static 'img/restoranque.png' %}" class="card-img-top" alt="RestoranQue">
             <div class="card-body">
@@ -208,8 +211,9 @@
               <p class="card-text">RestoranQue adalah aplikasi restoran berbasis web. Ini adalah kumpulan hasil kerja saya saat mengerjakan proyek akhir pada saat SMK.</p>
             </div>
           </div>
-        </div>
-        <div class="col-md-4" data-aos="fade-up-left">
+        </div> -->
+
+        <!-- <div class="col-md-4" data-aos="fade-up-left">
           <div class="card bg-dark text-white h-100 border-0 shadow p-2">
             <img src="{% static 'img/flutter.png' %}" class="card-img-top" alt="Calculator Mobile">
             <div class="card-body">
@@ -218,7 +222,8 @@
               <a href="https://github.com/mnovaldr/muhammad-noval-dwi-ramadhani/tree/mini-project-3" class="btn btn-outline-light" target="_blank">View Source Code</a>
             </div>
           </div>
-        </div>
+        </div> -->
+
       </div>
     </div>
   </section>
