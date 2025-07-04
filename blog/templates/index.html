@@ -129,9 +129,14 @@
     .card {
       margin-bottom: 1rem;
     }
+    .portfolio-img {
+      height: 200px;
+      object-fit: cover;
+    }
   </style>
 </head>
 <body>
+
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark bg-opacity-75 fixed-top shadow-sm">
     <div class="container">
@@ -156,12 +161,12 @@
     <div class="container hero-content">
       <div class="row align-items-center">
         <div class="col-lg-6 text-lg-start mb-4 mb-lg-0">
-          <h2>Hi Semuanya 👋, Saya<br><strong>Noval</strong></h2>
-          <p class="lead">Mahasiswa & Web Developer</p>
-          <p>Saya mahasiswa yang suka kucing dan suka ngulik teknologi. Aku paling tertarik sama web development. Buatku, bikin website itu kayak main puzzle—seru dan menantang.</p>
+          <h2>Hi Semuanya 👋, Saya<br><strong>{{ hero.judul }}</strong></h2>
+          <p class="lead">{{ hero.subjudul }}</p>
+          <p>{{ hero.deskripsi }}</p>
         </div>
         <div class="col-lg-6">
-          <img src="{% static 'img/foto1.jpg' %}" alt="Noval Avatar" class="img-fluid rounded-4 shadow" width="400">
+          <img src="{{ hero.gambar.url }}" alt="Noval Avatar" class="img-fluid rounded-4 shadow" width="400">
         </div>
       </div>
     </div>
@@ -170,14 +175,14 @@
   <!-- About Section -->
   <section class="py-5 bg-dark text-white" id="about" data-aos="fade-right">
     <div class="container text-center">
-      <h2>About Me</h2>
-      <p>Hai, saya Muhammad Noval Dwi Ramadhani, tapi panggil saja Noval. Beberapa teman sekolah mengenal saya sebagai Nopal.</p>
-      <p>Di luar teknologi, saya suka musik, film, bermain puzzle seperti sudoku dan rubik. Saya antusias belajar hal baru dan selalu mencari cara meningkatkan kemampuan saya dalam web development.</p>
+      <h2>{{ about.judul }}</h2>
+      <p>{{ about.deskripsi|linebreaksbr }}</p>
+    
       <div class="mt-4 social-icons">
-        <a href="https://www.instagram.com/mnvldr_/" target="_blank" class="me-3"><i class="fab fa-instagram fa-2x"></i></a>
-        <a href="https://github.com/mnovaldr" target="_blank" class="me-3"><i class="fab fa-github fa-2x"></i></a>
-        <a href="https://www.linkedin.com/in/mnovaldr" target="_blank" class="me-3"><i class="fab fa-linkedin fa-2x"></i></a>
-        <a href="mailto:mnovaldr@gmail.com" class="me-3"><i class="fas fa-envelope fa-2x"></i></a>
+        <a href="{{ about.instagram }}" target="_blank" class="me-3"><i class="fab fa-instagram fa-2x"></i></a>
+        <a href="{{ about.github }}" target="_blank" class="me-3"><i class="fab fa-github fa-2x"></i></a>
+        <a href="{{ about.linkedin }}" target="_blank" class="me-3"><i class="fab fa-linkedin fa-2x"></i></a>
+        <a href="mailto:{{ about.email }}" class="me-3"><i class="fas fa-envelope fa-2x"></i></a>
       </div>
     </div>
   </section>
@@ -187,42 +192,24 @@
     <div class="container">
       <div class="text-center">
         <h2>Portofolio</h2>
-        <p><strong>Karya-karya lama saya.</strong> Termasuk proyek akhir SMK, cek di bawah buat lihat koleksinya!</p>
+        <p>Berikut adalah beberapa proyek pilihan yang telah saya kerjakan. Setiap proyek merepresentasikan tahap pembelajaran dan penerapan keahlian teknis saya dalam pengembangan web.</p>
       </div>
-      <div class="row g-4 mt-4">
+      <div class="row g-4 mt-4 justify-content-center">
+        
         {% for p in portofolios %}
         <div class="col-md-4" data-aos="fade-up-left">
           <div class="card bg-dark text-white h-100 border-0 shadow p-2">
-            <img src="{{ p.gambar.url }}" class="card-img-top" alt="Portfolio">
+            <img src="{{ p.gambar.url }}" class="card-img-top portfolio-img" alt="Portfolio">
             <div class="card-body">
               <h5 class="card-title">{{ p.judul }}</h5>
               <p class="card-text">{{ p.deskripsi }}</p>
+              {% if p.link_sumber %}
               <a href="{{ p.link_sumber }}" class="btn btn-outline-light" target="_blank">View Source Code</a>
+              {% endif %}
             </div>
           </div>
         </div>
         {% endfor %}
-
-        <!-- <div class="col-md-4" data-aos="fade-up-left">
-          <div class="card bg-dark text-white h-100 border-0 shadow p-2">
-            <img src="{% static 'img/restoranque.png' %}" class="card-img-top" alt="RestoranQue">
-            <div class="card-body">
-              <h5 class="card-title">RestoranQue</h5>
-              <p class="card-text">RestoranQue adalah aplikasi restoran berbasis web. Ini adalah kumpulan hasil kerja saya saat mengerjakan proyek akhir pada saat SMK.</p>
-            </div>
-          </div>
-        </div> -->
-
-        <!-- <div class="col-md-4" data-aos="fade-up-left">
-          <div class="card bg-dark text-white h-100 border-0 shadow p-2">
-            <img src="{% static 'img/flutter.png' %}" class="card-img-top" alt="Calculator Mobile">
-            <div class="card-body">
-              <h5 class="card-title">Calculator Mobile</h5>
-              <p class="card-text">Ini adalah kumpulan pekerjaan saya saat saya melakukan sertifikasi pengembang seluler dengan kerangka kerja Flutter.</p>
-              <a href="https://github.com/mnovaldr/muhammad-noval-dwi-ramadhani/tree/mini-project-3" class="btn btn-outline-light" target="_blank">View Source Code</a>
-            </div>
-          </div>
-        </div> -->
 
       </div>
     </div>

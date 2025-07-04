@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.exceptions import ValidationError
 
 #Jenis
 class Jenis(models.Model):
@@ -27,6 +28,28 @@ class Portofolio(models.Model):
     deskripsi = models.TextField()
     gambar = models.ImageField(upload_to='portofolio/', blank=True, null=True)
     link_sumber = models.URLField(blank=True, null=True)
+
+    def __str__(self):
+        return self.judul
+    
+#Hero 
+class Hero(models.Model):
+    judul = models.CharField(max_length=100)
+    subjudul = models.CharField(max_length=100, default='Subjudul')
+    deskripsi = models.TextField()
+    gambar = models.ImageField(upload_to='hero/', blank=True, null=True)
+
+    def __str__(self):
+        return self.judul
+
+#About
+class About(models.Model):
+    judul = models.CharField(max_length=100)
+    deskripsi = models.TextField()
+    instagram = models.URLField(blank=True, null=True)
+    github = models.URLField(blank=True, null=True)
+    linkedin = models.URLField(blank=True, null=True)
+    email = models.EmailField(blank=True, null=True)
 
     def __str__(self):
         return self.judul

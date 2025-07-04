@@ -1,5 +1,6 @@
 from django.contrib import admin
-from . models import Barang, Jenis, Portofolio
+from . models import Barang, Jenis, Portofolio, Hero, About
+from .forms import HeroForm, AboutForm
 
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.contrib.auth.admin import GroupAdmin as BaseGroupAdmin
@@ -42,6 +43,24 @@ class PortofolioAdmin(ModelAdmin):
     list_display = ['judul', 'deskripsi']
     search_fields = ['judul', 'deskripsi']
 
-admin.site.register(Barang, BarangAdmin)
-admin.site.register(Jenis, JenisAdmin)
+class HeroAdmin(ModelAdmin):
+    form = HeroForm
+    list_display = ['judul','subjudul', 'deskripsi']
+    search_fields = ['judul','subjudul', 'deskripsi']
+
+
+    def has_add_permission(self, request):
+        return not Hero.objects.exists()
+    
+class AboutAdmin(ModelAdmin):
+    form = AboutForm
+    list_display = ['judul','deskripsi', 'instagram', 'github', 'linkedin', 'email']
+    search_fields = ['judul','deskripsi', 'instagram', 'github', 'linkedin', 'email']
+    def has_add_permission(self, request):
+        return not About.objects.exists()
+
+# admin.site.register(Barang, BarangAdmin)
+# admin.site.register(Jenis, JenisAdmin)
 admin.site.register(Portofolio, PortofolioAdmin)
+admin.site.register(Hero, HeroAdmin)
+admin.site.register(About, AboutAdmin)
