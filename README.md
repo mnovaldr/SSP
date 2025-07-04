@@ -2,7 +2,7 @@
 ```markdown
 # 🌐 Web Portofolio - Muhammad Noval Dwi Ramadhani
 
-Ini adalah proyek web portofolio yang dibuat menggunakan Django sebagai tugas Ujian Tengah Semester (UTS) pada mata kuliah Server Side Programming. Website ini menampilkan informasi pribadi, karya-karya portofolio, serta tautan media sosial.
+Ini adalah proyek web portofolio yang dibuat menggunakan Django sebagai tugas pada mata kuliah Server Side Programming. Website ini menampilkan informasi pribadi, karya-karya portofolio, serta tautan media sosial.
 
 ---
 
